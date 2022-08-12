@@ -14,14 +14,36 @@
     }
   ],
   "require": {
-    "php": ">=8.0",
-    "hnv/psr-http-interfaces": ">=1.0",
-    "hnv/psr-http-uri": ">=1.0",
-    "hnv/psr-http-stream": ">=1.0",
-    "hnv/psr-http-uploaded-file": ">=1.0"
+    "php": "8.1.*",
+    "hnv/psr-http-interfaces": "3.0.*",
+    "hnv/psr-http-uri": "2.1.*",
+    "hnv/psr-http-stream": "2.0.*",
+    "hnv/psr-http-uploaded-file": "2.1.*"
   },
   "require-dev": {
-    "phpunit/phpunit": ">=9.0"
+    "friendsofphp/php-cs-fixer": "^3.9",
+
+    "phpunit/php-code-coverage": "dev-main",
+    "phpunit/php-file-iterator": "dev-main",
+    "phpunit/php-text-template": "dev-main",
+    "phpunit/php-invoker": "dev-main",
+    "phpunit/php-timer": "dev-main",
+    "sebastian/cli-parser": "dev-main",
+    "sebastian/code-unit": "dev-main",
+    "sebastian/comparator": "dev-main",
+    "sebastian/diff": "dev-main",
+    "sebastian/environment": "dev-main",
+    "sebastian/exporter": "dev-main",
+    "sebastian/recursion-context": "dev-main",
+    "sebastian/code-unit-reverse-lookup": "dev-main",
+    "sebastian/complexity": "dev-main",
+    "sebastian/lines-of-code": "dev-main",
+    "sebastian/version": "dev-main",
+    "sebastian/global-state": "dev-main",
+    "sebastian/object-reflector": "dev-main",
+    "sebastian/object-enumerator": "dev-main",
+    "sebastian/type": "dev-main",
+    "phpunit/phpunit": "dev-main"
   },
   "autoload": {
     "psr-4": {

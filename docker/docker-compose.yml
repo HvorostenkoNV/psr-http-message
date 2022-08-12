@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  psr-http-message:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.1.0/24
+          gateway: 10.10.1.1
+
+services:
+  php:
+    build: php
+    container_name: 'psr-http-message-php'
+    volumes:
+      - ../:/var/www/html
+    ports:
+      - "9000:9000"
+    working_dir: /var/www/html
+    networks:
+      psr-http-message:
+        ipv4_address: 10.10.1.2
