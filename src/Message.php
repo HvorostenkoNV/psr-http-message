@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace HNV\Http\Message;
 
 use HNV\Http\Helper\Normalizer\NormalizingException;
+use InvalidArgumentException;
 use HNV\Http\Message\{
     Rules\HttpProtocolVersion       as HttpProtocolVersionRules,
     Normalizer\HttpProtocolVersion  as HttpProtocolVersionNormalizer,
 };
+use HNV\Http\Stream\StreamFactory;
 use Psr\Http\Message\{
     MessageInterface,
     StreamInterface,
@@ -16,7 +18,13 @@ use Psr\Http\Message\{
 
 class Message implements MessageInterface
 {
-    private string $protocolVersion = HttpProtocolVersionRules::DEFAULT;
+    private string          $protocolVersion = HttpProtocolVersionRules::DEFAULT;
+    private StreamInterface $body;
+
+    public function __construct()
+    {
+        $this->body = (new StreamFactory())->createStream();
+    }
 
     public function withProtocolVersion(string $version): static
     {
@@ -73,11 +81,18 @@ class Message implements MessageInterface
 
     public function withBody(StreamInterface $body): static
     {
-        // TODO: Implement withBody() method.
+        if (!$body->isReadable()) {
+            throw new InvalidArgumentException('body is not readable');
+        }
+
+        $newInstance        = clone $this;
+        $newInstance->body  = $body;
+
+        return $newInstance;
     }
 
     public function getBody(): StreamInterface
     {
-        // TODO: Implement getBody() method.
+        return $this->body;
     }
 }

@@ -18,7 +18,8 @@
     "hnv/psr-http-interfaces": "3.0.*",
     "hnv/psr-http-uri": "2.1.*",
     "hnv/psr-http-stream": "2.0.*",
-    "hnv/psr-http-uploaded-file": "2.1.*"
+    "hnv/psr-http-uploaded-file": "2.1.*",
+    "hnv/psr-http-helper": "2.0.*"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.9",
