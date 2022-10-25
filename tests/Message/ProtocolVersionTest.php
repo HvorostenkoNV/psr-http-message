@@ -25,7 +25,7 @@ class ProtocolVersionTest extends TestCase
     #[Attributes\Test]
     #[Attributes\DataProviderExternal(
         className : ProtocolVersionDataProvider::class,
-        methodName: 'normalizedValues'
+        methodName: 'normalizedSingleValue'
     )]
     public function withProtocolVersionProvidesNewInstance(string $value): void
     {
@@ -68,7 +68,7 @@ class ProtocolVersionTest extends TestCase
     #[Attributes\Test]
     #[Attributes\DataProviderExternal(
         className : ProtocolVersionDataProvider::class,
-        methodName: 'normalizedValues'
+        methodName: 'normalizedSingleValue'
     )]
     public function getProtocolVersionAfterClear(string $value): void
     {

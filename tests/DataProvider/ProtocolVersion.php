@@ -12,20 +12,26 @@ class ProtocolVersion
         yield from $this->normalizedValuesWithSeveralSegments();
     }
 
+    public function normalizedSingleValue(): iterable
+    {
+        foreach ($this->normalizedValues() as $values) {
+            yield $values;
+            break;
+        }
+    }
+
     public function invalidValues(): iterable
     {
-        $letter = 'x';
-
         yield [''];
         yield ['0'];
         yield ['0.0'];
         yield ['0.0.0'];
         yield ['0.0.0.0'];
 
-        yield ["$letter"];
-        yield ["$letter.0"];
-        yield ["0.$letter"];
-        yield ["1.$letter"];
+        yield ['x'];
+        yield ['x.0'];
+        yield ['0.x'];
+        yield ['1.x'];
 
         yield from $this->invalidValuesWithNegativeSegment();
         yield from $this->invalidValuesWithTooManySegments();
@@ -60,12 +66,12 @@ class ProtocolVersion
 
     private function invalidValuesWithTooManySegments(): iterable
     {
-        for ($firstNumber = 0; $firstNumber <= 20; $firstNumber++) {
-            for ($secondNumber = 1; $secondNumber <= 20; $secondNumber++) {
-                for ($thirdNumber = 0; $thirdNumber <= 20; $thirdNumber++) {
+        for ($firstNumber = 0; $firstNumber <= 3; $firstNumber++) {
+            for ($secondNumber = 1; $secondNumber <= 3; $secondNumber++) {
+                for ($thirdNumber = 0; $thirdNumber <= 3; $thirdNumber++) {
                     yield ["$firstNumber.$secondNumber.$thirdNumber"];
 
-                    for ($fourthNumber = 0; $fourthNumber <= 20; $fourthNumber++) {
+                    for ($fourthNumber = 0; $fourthNumber <= 3; $fourthNumber++) {
                         yield ["$firstNumber.$secondNumber.$thirdNumber.$fourthNumber"];
                     }
                 }

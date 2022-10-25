@@ -8,7 +8,7 @@ use HNV\Http\Helper\Collection\SpecialCharacters;
 
 class HttpProtocolVersion
 {
-    public const DEFAULT            = '1.1';
-    public const DELIMITER          = SpecialCharacters::DOT;
-    public const MAX_PARTS_COUNT    = 2;
+    public const DEFAULT        = '1.1';
+    public const DELIMITER      = SpecialCharacters::DOT;
+    public const PARTS_COUNT    = 2;
 }

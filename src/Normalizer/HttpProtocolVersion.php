@@ -24,12 +24,12 @@ class HttpProtocolVersion implements NormalizerInterface
     {
         $delimiter          = HttpProtocolVersionRules::DELIMITER->value;
         $valueSplit         = explode($delimiter, (string) $value);
-        $maxPartsCount      = HttpProtocolVersionRules::MAX_PARTS_COUNT;
+        $partsCount         = HttpProtocolVersionRules::PARTS_COUNT;
         $hasOnlyZeroParts   = true;
 
-        if (count($valueSplit) > $maxPartsCount) {
+        if (count($valueSplit) > $partsCount) {
             throw new NormalizingException('protocol version can contains '
-                ."maximum [{$maxPartsCount}] parts");
+                ."maximum [{$partsCount}] parts");
         }
 
         foreach ($valueSplit as $subValue) {
@@ -47,7 +47,7 @@ class HttpProtocolVersion implements NormalizerInterface
             throw new NormalizingException('protocol version has only zero parts');
         }
 
-        while (count($valueSplit) < $maxPartsCount) {
+        while (count($valueSplit) < $partsCount) {
             $valueSplit[] = 0;
         }
 
