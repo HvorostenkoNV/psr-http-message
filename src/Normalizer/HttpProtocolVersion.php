@@ -28,16 +28,14 @@ class HttpProtocolVersion implements NormalizerInterface
         $hasOnlyZeroParts   = true;
 
         if (count($valueSplit) > $maxPartsCount) {
-            throw new NormalizingException(
-                "protocol version can contains maximum [{$maxPartsCount}] parts"
-            );
+            throw new NormalizingException('protocol version can contains '
+                ."maximum [{$maxPartsCount}] parts");
         }
 
         foreach ($valueSplit as $subValue) {
             if (!is_numeric($subValue) || $subValue < 0) {
-                throw new NormalizingException(
-                    'protocol version can contains only positive numbers'
-                );
+                throw new NormalizingException('protocol version can contains '
+                    .'only positive numbers or zero');
             }
 
             if ($subValue > 0) {
